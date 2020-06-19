@@ -1,8 +1,9 @@
 {
-  "name": "conflux-developer-site-cn",
+  "name": "zh-hans.developer.conflux-chain.org",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Conflux-Chain/conflux-developer-site-cn.git",
+  "repository": "https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org.git",
+  "private": true,
   "scripts": {
     "start": "cfxdoc start",
     "build": "cfxdoc build"
@@ -10,6 +11,6 @@
   "author": "yqrashawn <namy.19@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "conflux-docusaurus-config": "^0.0.8"
+    "conflux-docusaurus-config": "^0.0.9"
   }
 }

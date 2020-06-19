@@ -1,6 +1,6 @@
 ---
 id: get_started
-title: Getting Started
+title: 入门 Conflux
 source_url: https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md
 custom_edit_url: https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org/edit/master/docs/conflux-doc/get_started.md
 keywords:

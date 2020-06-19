@@ -2,7 +2,7 @@ module.exports = {
   docs: [
     {
       type: "category",
-      label: "Learn About Conflux",
+      label: "了解 Conflux",
       items: [
         { type: "doc", id: "conflux_overview", folder: "introduction" },
         {
@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Try Conflux",
+      label: "使用 Conflux",
       items: [
         { type: "doc", folder: "conflux-doc", id: "installation" },
         { type: "doc", folder: "conflux-doc", id: "get_started" },

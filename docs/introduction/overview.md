@@ -1,6 +1,6 @@
 ---
 id: conflux_overview
-title: Conflux Overview
+title: 概述
 source_url: https://github.com/Conflux-Chain/conflux-developer-site/edit/master/docs/introduction/en/overview.md
 custom_edit_url: https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org/edit/master/docs/introduction/overview.md
 keywords:

@@ -18,6 +18,7 @@ jobs:
       - TARGET_BRANCH: gh-pages
     steps:
       - checkout
+      # don't need to check submodule in trans repo
       # - run:
       #     name: Check if there's any markdown file updated, update submodules
       #     command: |

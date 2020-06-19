@@ -18,18 +18,18 @@ jobs:
       - TARGET_BRANCH: gh-pages
     steps:
       - checkout
-      - run:
-          name: Check if there's any markdown file updated, update submodules
-          command: |
-            ./.circleci/scripts/update-submodules.sh
-      - run:
-          name: Maybe skip rest if no md file updatd
-          command: ./.circleci/scripts/maybe-skip.sh
+      # - run:
+      #     name: Check if there's any markdown file updated, update submodules
+      #     command: |
+      #       ./.circleci/scripts/update-submodules.sh
+      # - run:
+      #     name: Maybe skip rest if no md file updatd
+      #     command: ./.circleci/scripts/maybe-skip.sh
       - run:
           name: Build
           no_output_timeout: 5m
           command: |
-            yarn && yarn build
+            yarn && yarn build && yarn build
 
       - run:
           name: Deploy to github pages

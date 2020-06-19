@@ -2801,10 +2801,10 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-conflux-docusaurus-config@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/conflux-docusaurus-config/-/conflux-docusaurus-config-0.0.10.tgz#467d9887d358056e121f13dfb357b9ab69694ee2"
-  integrity sha512-WRlxtL7tfk08DHHWUvTH+eQmloWlVn64vD9/q3yc/UZe8KLrAqMMRb3bcJejBnRWyTcn3j6Sgj0YTAKo+yoi9Q==
+conflux-docusaurus-config@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/conflux-docusaurus-config/-/conflux-docusaurus-config-0.0.11.tgz#19e89422326a701cd57ad604158f931c0d1d2d06"
+  integrity sha512-3B2hob7YX8aaTl40B/kiJETsrmsaCjUcj3YzUEsQtA89obSwT7UbVAlKB5STGcN+uQz2AomALY74VeQSMz2xkQ==
   dependencies:
     "@docusaurus/core" "^2.0.0-alpha.56"
     "@docusaurus/preset-classic" "^2.0.0-alpha.56"

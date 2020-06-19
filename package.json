@@ -1,7 +1,6 @@
 {
   "name": "zh-hans.developer.conflux-chain.org",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.0",
   "repository": "https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org.git",
   "private": true,
   "scripts": {

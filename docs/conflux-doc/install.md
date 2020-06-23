@@ -13,7 +13,7 @@ keywords:
 
 
 安装构建依赖项
-Conflux需要**Rust1.42.0**、`clang`和`sqlite`来构建。
+Conflux需要 **Rust1.42.0**、`clang`和`sqlite`来构建。
 
 我们建议在通过 [rustup](https://www.rustup.rs/)安装Rust。如果您还没有rustup或clang，可以这样安装：
 

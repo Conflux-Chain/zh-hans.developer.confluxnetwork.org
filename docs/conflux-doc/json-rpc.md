@@ -8,38 +8,38 @@ keywords:
   - json-rpc
   - sdk
 ---
-Conflux JSON-RPC API是一组接口的集合，允许您使用JSON-RPC协议中的HTTP连接与本地或远程的Conflux节点进行交互。
+Conflux JSON-RPC API 是一组接口的集合，允许您使用 JSON-RPC 协议中的 HTTP 连接与本地或远程的 Conflux 节点进行交互。
 
-以下是带有示例的API参考文档。
+以下是带有示例的 API 参考文档。
 
 ## JSON-RPC
-JSON是一种轻量级的数据交换格式。 它可以表示数字，字符串，有序数值队列，和键值对集合。
+JSON 是一种轻量级的数据交换格式。 它可以表示数字，字符串，有序数值队列，和键值对集合。
 
-JSON-RPC是一种无状态、轻量级的远程过程调用（RPC）协议。该规范主要定义了几种数据结构以及与之相关的处理规则。它是与传输方式无关的，可以用在socket、HTTP 或各种消息传送环境。 它使用JSON（RFC 4627）作为数据格式。
+JSON-RPC 是一种无状态、轻量级的远程过程调用（RPC）协议。该规范主要定义了几种数据结构以及与之相关的处理规则。它是与传输方式无关的，可以用在 socket、HTTP 或各种消息传送环境。 它使用 JSON（RFC 4627）作为数据格式。
 
 
 ## JavaScript API
-我们还提供了一个JavaScript库[js-conflux-sdk](https://github.com/Conflux-Chain/js-conflux-sdk) ，供您从JavaScript应用程序内部与Conflux节点进行交互，为RPC提供了方便的接口。
+我们还提供了一个 JavaScript 库[js-conflux-sdk](https://github.com/Conflux-Chain/js-conflux-sdk) ，供您从 JavaScript 应用程序内部与 Conflux 节点进行交互，为 RPC 提供了方便的接口。
 
 ## JSON-RPC 节点和支持
-目前，Conflux拥有一个支持JSON-RPC 2.0和HTTP的[Rust 实现](https://github.com/Conflux-Chain/conflux-rust) 。
+目前，Conflux 拥有一个支持 JSON-RPC 2.0 和 HTTP 的 [Rust 实现](https://github.com/Conflux-Chain/conflux-rust) 。
 
 ## 十六进制值的编码
-当前，通过JSON传输，有两种关键数据类型：无格式字节数组和数量。 两者都以十六进制编码传输，但有不同的格式要求：
+当前，通过 JSON 传输，有两种关键数据类型：无格式字节数组和数量。 两者都以十六进制编码传输，但有不同的格式要求：
 
-当编码**数量**（整数，数字）时：编码为十六进制，前缀为“ 0x”，这是最紧凑的表现形式（小例外：零表示为“ 0x0”）。 例子：
+当编码**数量**（整数，数字）时：编码为十六进制，前缀为"0x"，这是最紧凑的表现形式（小例外：零表示为"0x0"）。 例子：
 
-* 0x41 （十进制65）
-* 0x400 （十进制1024）
-* WRONG: 0x（至少有一位数字 - 零为“ 0x0”）
-* WRONG: 0x0400（不允许以零开头）
-* WRONG: ff（必须以0x为前缀）
+* 0x41 （十进制数字 65）
+* 0x400 （十进制数字 1024）
+* 错误: 0x（需至少有一位数字 - 零为 "0x0"）
+* 错误: 0x0400（不允许以零开头）
+* 错误: ff（必须以 0x 为前缀）
 
-当编码 **无格式数据**（字节数组，帐户地址，哈希值，字节码数组）时：十六进制编码，前缀为“ 0x”，每个字节包含两个十六进制数字。 例子：
+当编码 **无格式数据**（字节数组，帐户地址，哈希值，字节码数组）时：十六进制编码，前缀为"0x"，每个字节包含两个十六进制数字。 例子：
 
-* 0x41 (长度为1，“A”)
-* 0x004200 (长度为3，“ \ 0B \ 0”)
-* 0x (长度为0，“”)
+* 0x41 (长度为 1，"A")
+* 0x004200 (长度为 3，"\ 0B \ 0")
+* 0x (长度为0，"")
 * WRONG: 0xf0f0f (必须为偶数位数)
 * WRONG: 004200 (必须以0x开头)
 
@@ -63,21 +63,21 @@ JSON-RPC是一种无状态、轻量级的远程过程调用（RPC）协议。该
 * cfx_getStorageAt
 * cfx_getStorageRoot
 
-当请求Conflux树图区块链的状态时，参数Epoch Number决定了Epoch的高度。
-以下是参数Epoch Number的可选项:
+当请求 Conflux 树图区块链的状态时，参数 Epoch Number 决定了 Epoch 的高度。
+以下是参数 Epoch Number 的可选项:
 
 * `HEX String` - 整型的纪元号
-* `String "earliest"` - 创始区块所在的最早纪元
-* `String "latest_mined"` - 最新挖掘的区块所在的纪元
+* `String "earliest"` - 创世区块所在的最早纪元
+* `String "latest_mined"` - 最新挖出的区块所在的纪元
 * `String "latest_state"` - 可执行状态的最新区块所在的纪元
 
-注意，出于性能优化的考虑，最新的纪元是不可执行的，所以在这些纪元里没有可用的状态。对于大多数与状态查询有关的RPCs，建议使用`"latest_state"`。
+注意，出于性能优化的考虑，最新的纪元是不可执行的，所以在这些纪元里没有可用的状态。对于大多数与状态查询有关的 RPCs，建议使用`"latest_state"`。
 
 
 ## Curl 范例解释
-Curl选项可能会返回一个关于content type报错的响应，这是因为 --data 选项会将content type设置为 application/x-www-form-urlencoded 。如果你的节点无法执行，手动设置header -H "Content-Type: application/json "。
+Curl 命令可能会返回一个关于 content type 报错的响应，这是因为 --data 选项会将 content type 设置为 application/x-www-form-urlencoded 。如果你的节点无法执行，请手动设置为 header -H "Content-Type: application/json "。
 
-范例也包含了URL/IP和端口的组合，它们必须作为最后的参数传给curl。
+范例也包含了 URL/IP 和端口的组合，它们必须作为最后的参数传给 curl。
 例如 ```http://localhost:12345```
 
 例子： [cfx_getbestblockhash](#cfx_getbestblockhash)
@@ -87,9 +87,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getBestBlockHash","params":[
 ```
 
 ## 从 Ethereum JSON-RPC 移植
-以太坊和Conflux之间，一些JSON-RPCs存在对应关系。
+Conflux 和以太坊之间，一些 JSON-RPCs 存在对应关系。
 
-尽管JSON-RPC的细节可能彼此不同，以下映射表有助于从以太坊迁移到Conflux：
+尽管 JSON-RPC 的细节可能彼此不同，以下映射表有助于从以太坊迁移到 Conflux：
 * eth_gasPrice => cfx_gasPrice
 * eth_blockNumber => cfx_epochNumber
 * eth_getBalance => cfx_getBalance
@@ -107,9 +107,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getBestBlockHash","params":[
 
 ## JSON-RPC 方法
 #### cfx_getTransactionByHash 
-通过交易哈希值，返回交易的信息。
+通过交易哈希值，返回交易的信息。该接口可根据一笔交易的哈希值获取这笔交易的详细信息。该接口提供了交易查询功能，在获取区块信息后，从区块信息中获取被打包的交易的哈希值，进行全部交易记录信息的提取。当交易处于 pengding （等待或挂起）状态时，返回值将会是 null，我们也可以根据接口的这个特性来判断一笔交易是否成功。
 ##### 参数
- 1. DATA, 32 Bytes - 交易的哈希值
+ 1. DATA, 32 Bytes - 当前交易的哈希值
 ```
 params: [
     '0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944b',
@@ -117,21 +117,21 @@ params: [
 ```
 ##### 返回值
 `Object` - 交易对象，如果未找到任何交易，则为`null`：
-* `blockHash`: `DATA`, 32字节-此交易存在并已执行的区块的哈希。交易等待状态时为`null`。
-* `contractCreated`: `DATA`，20字节-已创建的合约地址。当为不创建交易的合约时为`null`。
+* `blockHash`: `DATA`, 32字节 - 当前交易被打包进的且状态为已执行的区块的哈希值。交易为等待或挂起状态时返回`null`。
+* `contractCreated`: `DATA`，20字节 - 已创建的合约地址。当为不创建交易的合约时为`null`。
 * `data`: `DATA` - 与交易一起发送的数据。
-* `from`: `DATA`, 20字节-发送方地址。
-* `gas`: `QUANTITY` - 发送者提供的gas。
-* `gasPrice`: `QUANTITY` - 发送方提供的gas价格（以Drip为单位）。
-* `hash`: `DATA`, 32字节-交易的哈希。
-* `nonce`: `QUANTITY` - 发送方在此之前进行的交易次数。
-* `r`: `DATA`, 32字节-ECDSA签名r。
-* `s`: `DATA`, 32字节-ECDSA签名s。
+* `from`: `DATA`, 20字节 - 发送者的地址。
+* `gas`: `QUANTITY` - 发送者提供的 gas。
+* `gasPrice`: `QUANTITY` - 发送者提供的gas价格（以Drip为单位）（这笔交易每笔 gas 的价格）。
+* `hash`: `DATA`, 32字节 - 当前交易的哈希值。
+* `nonce`: `QUANTITY` - 发送者在此之前进行的交易次数。
+* `r`: `DATA`, 32字节 - ECDSA签名r。R，S，V是和交易签名相关的3个字段，是验签时所需要的字段。
+* `s`: `DATA`, 32字节 - ECDSA签名s。
 * `status`: `QUANTITY` - 0代表成功，1代表发生错误，当交易被跳过或未打包时为`null` 。
 * `to`: `DATA`, 20字节-接收者的地址。当其为合约创建的交易时为`null`。
 * `transactionIndex`: `QUANTITY` - 区块中交易的索引位置的整数。交易等待状态时为`null`。
-* `v`: `QUANTITY` - ECDSA恢复ID。
-* `value`: `QUANTITY` - 传输的值（以Drip为单位）。
+* `v`: `QUANTITY` - ECDSA签名v。
+* `value`: `QUANTITY` - 交易额（以 Drip 为单位）。
 
 ##### 使用范例
 ```
@@ -176,24 +176,24 @@ params: [
 ```
 ##### 返回值
 `Object` - 区块对象，如果未找到任何区块，则为`null`:
-* `adaptive`: `Boolean` - 如果为`true` ，说明区块的权重符合GHAST规则，否则为`false`。
-* `blame`: `QUANTITY` - 如果为0，说明在其引用路径上没有blame区块；如果大于0，则说明在其引用路径上最近的blame区块距离为`blame`。
-* `deferredLogsBloomHash`: `DATA`, 32字节-延迟日志的Bloom哈希。
-* `deferredReceiptsRoot`: `DATA`, 32字节-延迟执行后的区块的接收的哈希值。
-* `deferredStateRoot`: `DATA`, 32字节-延迟执行后，区块的最终状态排列的根。
+* `adaptive`: `Boolean` - 如果为`true` ，说明区块的权重符合 GHAST 规则，否则为`false`。
+* `blame`: `QUANTITY` - 如果为 0，说明在其引用路径上没有 blame 区块；如果大于0，则说明在其引用路径上最近的 blame 区块距离为`blame`。
+* `deferredLogsBloomHash`: `DATA`, 32字节 - 延迟日志的 Bloom 哈希。
+* `deferredReceiptsRoot`: `DATA`, 32字节 - 延迟执行后的区块的接收的哈希值。
+* `deferredStateRoot`: `DATA`, 32字节 - 延迟执行后，区块的最终状态排列的根。
 * `difficulty`: `QUANTITY` - 此区块的难度的整数。
 * `epochNumber`: `QUANTITY` - 用户视图中的当前区块纪元号。如果它不处在最佳区块集合或未确定纪元号，则为`null` 。
-* `gasLimit`: `QUANTITY` - 此区块中允许的最大gas值。
+* `gasLimit`: `QUANTITY` - 此区块中允许的最大 gas 值。
 * `hash`: `DATA`, 32 Bytes - 区块链的哈希值。当状态为等待的时为`null`。
 * `height`: `QUANTITY` - 区块的高度。当状态为等待的时为`null`。
 * `miner`: `DATA`, 20 Bytes - 获得采矿奖励的受益人地址。
 * `nonce`: `DATA`, 8 Bytes - 生成的工作量证明的哈希。当状态为等待的时为`null`。 
 * `parentHash`: `DATA`, 32 Bytes - 父区块的哈希。
 * `powQuality`: , `DATA`, Bytes - 生成的工作量证明的哈希。当状态为等待的时为`null`。
-* `refereeHashes`: `Array` - referee哈希数组。
+* `refereeHashes`: `Array` - referee 哈希数组。
 * `size`: `QUANTITY` - 此区块的大小（以字节为单位）。
-* `timestamp`: `QUANTITY` - 该区块被收录时的UNIX时间戳。
-* `transactions`: `Array` - 交易对象的数组，或32字节的交易哈希，具体取决于最后给定的参数。
+* `timestamp`: `QUANTITY` - 该区块被收录时的 UNIX 时间戳。
+* `transactions`: `Array` - 交易对象的数组，或 32 字节的交易哈希，具体取决于最后给定的参数。
 * `transactionsRoot`: `DATA`, 32 Bytes - 区块交易的哈希。
 
 ##### 使用范例
@@ -302,11 +302,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_epochNumber","params":[],"id
 ---
 
 #### cfx_gasPrice
-返回当前的gas价格（以Drip为单位）。
+返回当前的 gas 价格（以 Drip 为单位）。
 ##### 参数
 `none`
 ##### 返回值
-`QUANTITY` - 当前的gas价格（以Drip为单位）.
+`QUANTITY` - 当前的 gas 价格（以 Drip 为单位）.
 ##### 使用范例
 ```
 // Request
@@ -366,7 +366,7 @@ params: [
 ]
 ```
 ##### 返回值
-`QUANTITY` - 当前地址帐户的余额（以Drip为单位）。
+`QUANTITY` - 当前地址帐户的余额（以 Drip 为单位）。
 ##### 使用范例
 ```
 // Request
@@ -394,7 +394,7 @@ params: [
 ]
 ```
 ##### 返回值
-`QUANTITY` - 当前抵押账户的余额（以Drip为单位）。
+`QUANTITY` - 当前抵押账户的余额（以 Drip 为单位）。
 ##### 使用范例
 ```
 // Request
@@ -468,7 +468,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getAdmin","params":["0x8af71
 ---
 
 #### cfx_getCode
-返回给定合约的code。
+返回给定合约的 code。
 ##### 参数
 1. `DATA`, 20 Bytes - 合约地址。
 2. `QUANTITY|TAG` - 纪元号, 或字符串 "latest_mined",  "latest_state", "earliest", 详见 [epoch number parameter](#the-epoch-number-parameter)
@@ -479,7 +479,7 @@ params: [
 ]
 ```
 ##### 返回值
-`DATA` - 合约的字节码byte code, 如果合约不存在返回`0x` 。
+`DATA` - 合约的字节码 byte code, 如果合约不存在返回`0x` 。
 ##### 使用范例
 ```
 // Request
@@ -541,8 +541,8 @@ params: [
 
 `Object` - 存储根对象, 如果合约不存在返回`null` :
 
-* `delta`: `DATA`, 32 Bytes - delta排序下的存储根。
-* `intermediate`: `DATA`, 32 Bytes - intermediate排序中的存储根.
+* `delta`: `DATA`, 32 Bytes - delta 排序下的存储根。
+* `intermediate`: `DATA`, 32 Bytes - intermediate 排序中的存储根.
 * `snapshot`: `DATA`, 32 Bytes - 快照中的存储根。
 
 如果所有这三个字段可以匹配此RPC的两次调用，则可保证合约的存储是相同的。 如果它们不匹配，则存储可能已更改（或系统已过渡到新状态）。
@@ -583,7 +583,7 @@ params: [
 ]
 ```
 ##### 返回值
-`Object` - 发起人信息对象，如果合同合约中没有赞助者，则返回对象中的所有字段均为`0`：
+`Object` - 发起人信息对象，如果合约中没有赞助者，则返回对象中的所有字段均为`0`：
 
    * `sponsorBalanceForCollateral`: `QUANTITY` - 赞助账户的抵押余额。
    * `sponsorBalanceForGas`: `QUANTITY` - 赞助账户的gas余额。
@@ -887,8 +887,8 @@ params: [
 ##### 返回值
 `Object` - 给定帐户的状态:
 * `balance`: `QUANTITY` - 账户余额。
-* `nonce`: `QUANTITY` - 帐户下一次交易的nonce。
-* `codeHash`: `QUANTITY` - 帐户的code哈希。
+* `nonce`: `QUANTITY` - 帐户下一次交易的 nonce。
+* `codeHash`: `QUANTITY` - 帐户的 code 哈希。
 * `stakingBalance`: `QUANTITY` - 帐户的质押余额。
 * `collateralForStorage`: `QUANTITY` - 帐户的抵押品存储。
 * `accumulatedInterestReturn`: `QUANTITY` -帐户的累计无误收益。

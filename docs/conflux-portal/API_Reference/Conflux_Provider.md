@@ -44,8 +44,8 @@ to learn about the upcoming API changes](#new-api).
  返回一个表示当前区块链网络ID的数字字符串。以下是几个示例值：
 
 ```javascript
-'1': Conflux Main Network
-'2': Conflux Test network
+'0': Conflux Main Network
+'1': Conflux Test network
 ```
 ### **conflux.selectedAddress(选定的地址)**
 
@@ -247,8 +247,8 @@ conflux.on('chainChanged', function (chainId) {
 #### 链和网络ID列表
 
 ```javascript
-'1': Conflux Main Network
-'2': Conflux Test network
+'0': Conflux Main Network
+'1': Conflux Test network
 ```
 ### conflux.sendAsync(options, callback) (已弃用)
 
@@ -296,8 +296,8 @@ future._
 返回一个表示当前区块链网络ID的数字字符串。以下是几个示例值：
 
 ```javascript
-'1': Conflux Main Network
-'2': Conflux Test network
+'0': Conflux Main Network
+'1': Conflux Test network
 ```
 ### **conflux.selectedAddress (已弃用)**
 

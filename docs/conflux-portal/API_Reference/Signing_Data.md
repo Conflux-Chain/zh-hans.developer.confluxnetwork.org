@@ -1,11 +1,11 @@
 ---
 id: signing_data_with_portal
-title: 使用 Portal 浏览器插件钱包对数据签名
+title: 使用 ConfluxPortal 浏览器插件钱包对数据签名
 custom_edit_url: https://github.com/Conflux-Chain/conflux-portal-docs/edit/master/docs/cn/portal/API_Reference/Signing_Data.md
 ---
 ## 签名方法[#](https://developer.conflux-chain.org/docs/introduction/en/conflux_overview/#history-of-the-signing-methods)
 
-Conflux Portal 是由 MetaMask 继承而来，MetaMask 中有多种签名方法，您可以在 MetaMask 文档中查阅所有签名方法。
+ConfluxPortal 是由 MetaMask 继承而来，MetaMask 中有多种签名方法，您可以在 MetaMask 文档中查阅所有签名方法。
 
 ## Portal 中有何改善[#](https://developer.conflux-chain.org/docs/introduction/en/conflux_overview/#what-changed-in-confluxportal)
 

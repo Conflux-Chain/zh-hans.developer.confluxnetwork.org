@@ -117,20 +117,20 @@ params: [
 ```
 ##### 返回值
 `Object` - 交易对象，如果未找到任何交易，则为`null`：
-* `blockHash`: `DATA`, 32字节 - 当前交易被打包进的且状态为已执行的区块的哈希值。交易为等待或挂起状态时返回`null`。
-* `contractCreated`: `DATA`，20字节 - 已创建的合约地址。当为不创建交易的合约时为`null`。
+* `blockHash`: `DATA`, 32 字节 - 当前交易被打包进的且状态为已执行的区块的哈希值。交易为等待或挂起状态时返回`null`。
+* `contractCreated`: `DATA`，20 字节 - 已创建的合约地址。当为不创建交易的合约时为`null`。
 * `data`: `DATA` - 与交易一起发送的数据。
-* `from`: `DATA`, 20字节 - 发送者的地址。
+* `from`: `DATA`, 20 字节 - 发送者的地址。
 * `gas`: `QUANTITY` - 发送者提供的 gas。
-* `gasPrice`: `QUANTITY` - 发送者提供的gas价格（以Drip为单位）（这笔交易每笔 gas 的价格）。
-* `hash`: `DATA`, 32字节 - 当前交易的哈希值。
+* `gasPrice`: `QUANTITY` - 发送者提供的 gas 价格（以 Drip 为单位）（这笔交易每笔 gas 的价格）。
+* `hash`: `DATA`, 32 字节 - 当前交易的哈希值。
 * `nonce`: `QUANTITY` - 发送者在此之前进行的交易次数。
-* `r`: `DATA`, 32字节 - ECDSA签名r。R，S，V是和交易签名相关的3个字段，是验签时所需要的字段。
-* `s`: `DATA`, 32字节 - ECDSA签名s。
-* `status`: `QUANTITY` - 0代表成功，1代表发生错误，当交易被跳过或未打包时为`null` 。
-* `to`: `DATA`, 20字节-接收者的地址。当其为合约创建的交易时为`null`。
+* `r`: `DATA`, 32 字节 - ECDSA 签名 r。R，S，V 是和交易签名相关的 3 个字段，是验签时所需要的字段。
+* `s`: `DATA`, 32 字节 - ECDSA 签名 s。
+* `status`: `QUANTITY` - 0 代表成功，1 代表发生错误，当交易被跳过或未打包时为`null` 。
+* `to`: `DATA`, 20 字节-接收者的地址。当其为合约创建的交易时为`null`。
 * `transactionIndex`: `QUANTITY` - 区块中交易的索引位置的整数。交易等待状态时为`null`。
-* `v`: `QUANTITY` - ECDSA签名v。
+* `v`: `QUANTITY` - ECDSA 签名 v。
 * `value`: `QUANTITY` - 交易额（以 Drip 为单位）。
 
 ##### 使用范例
@@ -177,10 +177,10 @@ params: [
 ##### 返回值
 `Object` - 区块对象，如果未找到任何区块，则为`null`:
 * `adaptive`: `Boolean` - 如果为`true` ，说明区块的权重符合 GHAST 规则，否则为`false`。
-* `blame`: `QUANTITY` - 如果为 0，说明在其引用路径上没有 blame 区块；如果大于0，则说明在其引用路径上最近的 blame 区块距离为`blame`。
-* `deferredLogsBloomHash`: `DATA`, 32字节 - 延迟日志的 Bloom 哈希。
-* `deferredReceiptsRoot`: `DATA`, 32字节 - 延迟执行后的区块的接收的哈希值。
-* `deferredStateRoot`: `DATA`, 32字节 - 延迟执行后，区块的最终状态排列的根。
+* `blame`: `QUANTITY` - 如果为 0，说明在其引用路径上没有 blame 区块；如果大于 0，则说明在其引用路径上最近的 blame 区块距离为`blame`。
+* `deferredLogsBloomHash`: `DATA`, 32 字节 - 延迟日志的 Bloom 哈希。
+* `deferredReceiptsRoot`: `DATA`, 32 字节 - 延迟执行后的区块的接收的哈希值。
+* `deferredStateRoot`: `DATA`, 32 字节 - 延迟执行后，区块的最终状态排列的根。
 * `difficulty`: `QUANTITY` - 此区块的难度的整数。
 * `epochNumber`: `QUANTITY` - 用户视图中的当前区块纪元号。如果它不处在最佳区块集合或未确定纪元号，则为`null` 。
 * `gasLimit`: `QUANTITY` - 此区块中允许的最大 gas 值。
@@ -612,7 +612,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getSponsorInfo","params":["0
 
 ---
 #### cfx_getNextNonce
-返回给定地址应使用的下一个nonce。
+返回给定地址应使用的下一个 nonce。
 ##### 参数
 1. `DATA`, 20 Bytes - 地址.
 2. `QUANTITY|TAG` - 纪元号, 或字符串 "latest_mined",  "latest_state", "earliest", 详见 [epoch number parameter](#the-epoch-number-parameter)
@@ -623,7 +623,7 @@ params: [
 ]
 ```
 ##### 返回值
-`QUANTITY` - 给定地址应使用的下一个nonce。
+`QUANTITY` - 给定地址应使用的下一个 nonce。
 
 ##### 使用范例
 ```
@@ -669,7 +669,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_sendRawTransaction","params"
 虚拟调用合约，返回输出数据。
 
 ##### 参数
-1. `Object` - call请求对象：A call request object:
+1. `Object` - call 请求对象：A call request object:
 * `from`: `DATA`, 20 Bytes - （可选，默认值：随机地址）发送者的地址。
 * `to`: `DATA`, 20 Bytes - （可选，默认值：合约创建为`null`）接受者的地址。
 * `gasPrice`: `QUANTITY` - （可选，默认：`0`）发送者提供的gas价格（以Drip为单位）。
@@ -728,7 +728,7 @@ params: [
 ```
 ##### 返回值
 `Object` - 预估的结果对象：
-   * `gasUsed`: `QUANTITY` - 执行后使用的gas。
+   * `gasUsed`: `QUANTITY` - 执行后使用的 gas。
    * `storageCollateralized`: `QUANTITY` - 抵押存储，以字节为单位。
 
 ##### 使用范例
@@ -843,7 +843,7 @@ params: [
 * `contractCreated`: `DATA`, 20 Bytes - 已创建的合约地址。为非合约创建的交易时为`null`。
 * `stateRoot`: `DATA`, 32 Bytes - 状态根的哈希值。
 * `outcomeStatus`: `QUANTITY` - 结果状态代码。
-* `logsBloom`: `DATA`, 256 Bytes - bloom过滤器，用于轻客户端快速检索相关日志。
+* `logsBloom`: `DATA`, 256 Bytes - bloom 过滤器，用于轻客户端快速检索相关日志。
 * `logs`: `Array` - 此交易生成的日志对象数组, 见 [cfx_getLogs](#cfx_getlogs)
 
 ##### 使用范例

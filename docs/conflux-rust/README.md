@@ -2,7 +2,7 @@
 id: internal_contract
 title: 内置合约
 source_url: https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
-custom_edit_url: https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org/edit/master/docs/conflux-rust/internal_contract/README.md
+custom_edit_url: https://github.com/Conflux-Chain/zh-hans.developer.conflux-chain.org/edit/master/docs/conflux-rust/README.md
 keywords:
   - conflux
   - contract

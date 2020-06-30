@@ -7,13 +7,13 @@ keywords:
   - conflux
   - contract
 ---
-Conflux引入了一些内置的内部合约，以便更好地进行系统维护和链上治理。而本文档将介绍如何使用这些内部合约。
+Conflux 引入了一些内置的内部合约，以便更好地进行系统维护和链上治理。而本文档将介绍如何使用这些内部合约。
 
 后续文档使用 [js-conflux-sdk](https://github.com/Conflux-Chain/js-conflux-sdk) 作为案例
 
 ## 通过赞助使用合约的方法
 
-Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，一个账户余额为0的新用户，只要执行赞助（通常由Dapps的运营商赞助），就能够直接调用智能合约。 通过引入内置的 SponsorControl 合约已记录对智能合约的赞助信息。
+Conflux 实现了一种赞助机制以补贴用户使用智能合约。因此，一个账户余额为 0 的新用户，只要执行赞助（通常由 Dapps 的运营商赞助），就能够直接调用智能合约。 通过引入内置的 SponsorControl 合约已记录对智能合约的赞助信息。
 
 **SponsorControl** 智能合约为每个用户建立的合约维护以下信息:
 + `sponsor_for_gas`: 为提供燃料费用补贴的账户；
@@ -30,13 +30,13 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 ### 赞助更新
 
-可以通过调用SponsorControl合同来更新燃料赞助费用和抵押担保物。要替换合约中的 `sponsor_for_gas` ，新的赞助人应当向合约转移比当前合约 `sponsor_balance_for_gas` 更多的资金，并为 `sponsor_limit_for_gas_fee` 设定一个新值。除非原有的 `sponsor_limit_for_gas_fee` 无法负担赞助，否则， `sponsor_limit_for_gas_fee` 的新值应不低于原有赞助者设置的限额。而且，转入的资金应当是新限额的1000倍及以上，这样至少可以补贴 `1000` 个调用C的交易。 如满足上述条件，则剩余的 `sponsor_balance_for_gas` 将退还给之前的赞助账户 `sponsor_for_gas` ，随后根据新赞助商的规范更新 `sponsor_balance_for_gas` ， `sponsor_balance_for_gas` ，及 `sponsor_limit_for_gas_fee` 。
+可以通过调用 SponsorControl 合同来更新燃料赞助费用和抵押担保物。要替换合约中的 `sponsor_for_gas` ，新的赞助人应当向合约转移比当前合约 `sponsor_balance_for_gas` 更多的资金，并为 `sponsor_limit_for_gas_fee` 设定一个新值。除非原有的 `sponsor_limit_for_gas_fee` 无法负担赞助，否则， `sponsor_limit_for_gas_fee` 的新值应不低于原有赞助者设置的限额。而且，转入的资金应当是新限额的1000倍及以上，这样至少可以补贴 `1000` 个调用C的交易。 如满足上述条件，则剩余的 `sponsor_balance_for_gas` 将退还给之前的赞助账户 `sponsor_for_gas` ，随后根据新赞助商的规范更新 `sponsor_balance_for_gas` ， `sponsor_balance_for_gas` ，及 `sponsor_limit_for_gas_fee` 。
 
 对 `sponsor_for_collateral` 的替换操作与上文描述非常类似，只是没有类似于燃料费用的限制。新的赞助人应当向C转入比现有赞助人提供的资金更多的资金作为合约的抵押担保物。那么当前赞助人 `sponsor_for_collateral` 的担保物将被全额退还，如 `sponsor_balance_for_collateral` 与合约使用的抵押担保总额之和，此外两个抵押担保字段均按照新赞助人的要求进行相应的变更。一个合约账户允许成为赞助人。
 
 ### 接口
 
-内建的合约地址为 `0x8ad036480160591706c831f0da19d1a424e39469` 。 内部合约的abi可以在 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/SponsorWhitelistControl.json)以及 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/SponsorWhitelistControl.sol)获取。
+内建的合约地址为 `0x8ad036480160591706c831f0da19d1a424e39469` 。 内部合约的 abi 可以在 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/SponsorWhitelistControl.json)以及 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/SponsorWhitelistControl.sol)获取。
 
 + `set_sponsor_for_gas(address contract, uint upper_bound)` ：如果有人希望向合约地址 `contract` 赞助燃料费用， 他/她（也可以是合约账户）可以在调用该函数的同时向地址 `0x8ad036480160591706c831f0da19d1a424e39469` 传输代币。 参数 `upper_bound` 是指赞助者为单笔交易支付的燃料费用上限。 传输的代币量至少为参数 `upper_bound` 的1000倍。赞助者可能会被赞助更多代币同时设置更高的上界参数的赞助者所替换。当前赞助者也可以调用该函数并向该合约传输更多代币。在当前赞助者账户余额小于参数 `upper_bound` 时 ， `upper_bound` 值将被动态调低。
 + `set_sponsor_for_collateral(address contract_addr)`： 如果有人希望向地址为 `contract` 的合约赞助担保金，他/她（也可以是合约账户）可以在调用该函数的同时向地址 `0x8ad036480160591706c831f0da19d1a424e39469`传输代币。赞助者可能会被传输更多代币的新赞助者替换而当前赞助者也可通过调用该函数向合约传输更多代币。
@@ -123,9 +123,9 @@ you_contract.remove(white_list_addr).sendTransaction({
 
 引入 **AdminControl** 合约的目的是为了更好地维护其他智能合约，特别是那些没有适当销毁程序而临时生成的智能合约：它记录了每个用户建立的智能合约的管理员，并根据相应管理员的要求进行销毁处理。
 
-智能合约的默认管理员是合约的创建者，即使合约创建的交易发送者α。智能合约的当前管理员可通过向AdminControl合约发送请求，将其权限转移给另一个普通账户。合约账户不允许成为其他合约的管理者，因为这种机制主要是用于试探性的维护。任何带有自定义授权规则的长期管理都应该在合约内部实现，如作为处理销毁请求的特定功能。
+智能合约的默认管理员是合约的创建者，即使合约创建的交易发送者α。智能合约的当前管理员可通过向 AdminControl 合约发送请求，将其权限转移给另一个普通账户。合约账户不允许成为其他合约的管理者，因为这种机制主要是用于试探性的维护。任何带有自定义授权规则的长期管理都应该在合约内部实现，如作为处理销毁请求的特定功能。
 
-在任何时候，现有合同的管理人`addr` 都有权通过调用AdminControl申请销毁合约。但是，如果用于存储合同的抵押物不为零，或 `addr` 不是合约的当前管理者，则该请求将被拒绝。如果 `addr` 是合约的当前管理者，且合约中的存储抵押品为零，则销毁请求会被接受，且处理流程如下：
+在任何时候，现有合同的管理人`addr` 都有权通过调用 AdminControl 申请销毁合约。但是，如果用于存储合同的抵押物不为零，或 `addr` 不是合约的当前管理者，则该请求将被拒绝。如果 `addr` 是合约的当前管理者，且合约中的存储抵押品为零，则销毁请求会被接受，且处理流程如下：
 1. 合约余额将退还给 `addr` ；
 2. 合约中的 `sponsor_balance_for_gas` 会退还给 `sponsor_for_gas` ；
 3. 合约中的 `sponsor_balance_for_collateral` 会退还给 `sponsor_for_collateral` ；
@@ -134,7 +134,7 @@ you_contract.remove(white_list_addr).sendTransaction({
 
 ### 接口
 
-合约地址为 `0x8060de9e1568e69811c4a398f92c3d10949dc891`。 内部合约的abi可以在[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/AdminControl.json)以及[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/AdminControl.sol)获取。
+合约地址为 `0x8060de9e1568e69811c4a398f92c3d10949dc891`。 内部合约的 abi 可以在[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/AdminControl.json)以及[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/AdminControl.sol)获取。
 
 + `set_admin(address contract, address admin)`： 设置 `admin` 为合约 `contract` 的管理员。函数调用者应为合约 `contract` 的管理员且账号状态正常。调用者要确保 `contract` 字段确实写入了合约地址且 `admin` 字段是正常的账户地址。否则，调用失败。
 
@@ -172,9 +172,9 @@ admin_contract.destroy(contract_addr).sendTransaction({
 
 ## 权益质押机制
 
-Conflux引入权益质押机制的原因有两个：一、权益机制提供了一种对占用存储空间更好的收费方式（相比于“一次付费，永久占用”）。二、该机制还有助于定义分散治理中的投票权。
+Conflux 引入权益质押机制的原因有两个：一、权益机制提供了一种对占用存储空间更好的收费方式（相比于“一次付费，永久占用”）。二、该机制还有助于定义分散治理中的投票权。
 
-在高层，Conflux实现了一个内置的**Staking** 合约，记录所有账户的权益信息。通过向该合约发送交易，用户（包括外部用户和智能合约）可以存入/提取资金，也被称为合约内的权益。质押资金的利息在提款时发放，其数量取决于提款金额和质押时长。
+在高层，Conflux 实现了一个内置的 **Staking** 合约，记录所有账户的权益信息。通过向该合约发送交易，用户（包括外部用户和智能合约）可以存入/提取资金，也被称为合约内的权益。质押资金的利息在提款时发放，其数量取决于提款金额和质押时长。
 
 ### 利率
 

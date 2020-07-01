@@ -3,7 +3,7 @@ id: introduction
 title: 什么是 ConfluxPortal
 custom_edit_url: https://github.com/Conflux-Chain/conflux-portal-docs/edit/master/docs/cn/portal/Introduction.md
 ---
-欢迎使用ConfluxPortal 的 开发者文档. ConfluxPortal 是 Conflux 版本的 [MetaMask](https://github.com/MetaMask/metamask-extension#readme). 本文档用于学习开发 ConfluxPortal 的应用。
+欢迎使用ConfluxPortal 的 开发者文档。 ConfluxPortal 是 Conflux 版本的 [MetaMask](https://github.com/MetaMask/metamask-extension#readme)。本文档用于学习开发 ConfluxPortal 的应用。
 
 * 你可以在 [the github release page](https://github.com/Conflux-Chain/conflux-portal/releases) 找到ConfluxPortal的最新版本以及 [in this issue](https://github.com/Conflux-Chain/conflux-portal/issues/31) 上的安装说明。
 * 为了获得使用ConfluxPortal的帮助, 在我们的github repo上提交问题[submit issues](https://github.com/Conflux-Chain/conflux-portal/issues/new/choose) 。

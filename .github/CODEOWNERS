@@ -1,0 +1,13 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+
+docs/introduction/overview.md         @sparkmiw @angelia-yuqi-personal
+docs/js-conflux-sdk/*                 @resodo @GeekBerry @angelia-yuqi-personal
+docs/go-conflux-sdk/*                 @resodo @wangdayong228 @angelia-yuqi-personal
+docs/conflux-rust/*                   @zimpha @angelia-yuqi-personal
+docs/conflux-portal/*                 @yqrashawn @angelia-yuqi-personal
+docs/conflux-doc/get_started.md       @sparkmiw @angelia-yuqi-personal
+docs/conflux-doc/cli.md               @sparkmiw @boqiu @Thegaram @angelia-yuqi-personal
+docs/conflux-doc/install.md           @sparkmiw @fanlong @peilun-conflux @angelia-yuqi-personal
+docs/conflux-doc/json-rpc.md          @sparkmiw @yqliu @Thegaram @angelia-yuqi-personal
+docs/conflux-doc/send_transaction.md  @peilun-conflux @fanlong @angelia-yuqi-personal

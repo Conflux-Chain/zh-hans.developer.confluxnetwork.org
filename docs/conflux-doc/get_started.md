@@ -20,7 +20,7 @@ keywords:
 
 * 根据您的公共IP地址设置`public_address`，默认情况下端口应设置为32323。
 * 将`mining_author`设置为接收挖矿奖励的账户地址。
-* Conflux团队为测试网维护了一些全功能节点，它们以`bootnodes`的形式提供出来。 "bootnodes"。如果你想使用其他节点来引导您新创建的节点，您应当编辑该条目。
+* Conflux 团队为测试网维护了一些全功能节点，它们以`bootnodes`的形式提供出来。 "bootnodes"。如果你想使用其他节点来引导您新创建的节点，您应当编辑该条目。
 
 之后您就可以按如下命令执行:
 
@@ -37,11 +37,11 @@ $ ../target/release/conflux --config default.toml
 
 ## 配置 Conflux 全节点
 
-Conflux 可以使用 CLI 选项或配置文件进行配置。如CLI标志和配置文件对某项设置存在差异，则优先以 CLI 选项为准。 
+Conflux 可以使用 CLI 选项或配置文件进行配置。如 CLI 标志和配置文件对某项设置存在差异，则优先以 CLI 选项为准。 
 
 配置文件遵循[TOML](https://github.com/toml-lang/toml)格式。配置文件的路径可以通过 CLI 选项`--config path/to/conflux.toml`来设置。在 `run` 目录下还提供了一个默认配置文件 `default.toml`，其中包含了所有的配置选项，您可以从那里开始定制您的配置。
 
-您可以通过运行`$ ./conflux --help`来列出所有 CLI 选项。绝大多数 CLI 选项都会对应到TOML文件内的设置，例如`--public-address 127.0.0.1:32323`可以通过创建一个配置文件来进行设置。
+您可以通过运行`$ ./conflux --help`来列出所有 CLI 选项。绝大多数 CLI 选项都会对应到 TOML 文件内的设置，例如`--public-address 127.0.0.1:32323`可以通过创建一个配置文件来进行设置。
 
 ```toml
 public_address="127.0.0.1:32323"

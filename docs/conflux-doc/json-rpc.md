@@ -618,8 +618,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getSponsorInfo","params":["0
 2. `QUANTITY|TAG` - 纪元号, 或字符串 "latest_mined",  "latest_state", "earliest", 详见 [epoch number parameter](#the-epoch-number-parameter)
 ```
 params: [
-    '0xfbe45681ac6c53d5a40475f7526bac1fe7590fb8',
-    'latest_state' // state at the latest executed epoch
+    "0xfbe45681ac6c53d5a40475f7526bac1fe7590fb8",
+    "latest_state" // state at the latest executed epoch
 ]
 ```
 ##### 返回值
@@ -628,7 +628,7 @@ params: [
 ##### 使用范例
 ```
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getNextNonce","params":["0xfbe45681ac6c53d5a40475f7526bac1fe7590fb8", 'latest_state'],"id":1}'
+curl -X POST --data '{"jsonrpc":"2.0","method":"cfx_getNextNonce","params":["0xfbe45681ac6c53d5a40475f7526bac1fe7590fb8", "latest_state"],"id":1}'
 
 // Result
 {

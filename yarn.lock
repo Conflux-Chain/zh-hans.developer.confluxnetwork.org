@@ -2446,9 +2446,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001043, caniuse-lite@^1.0.30001061:
-  version "1.0.30001066"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001066.tgz#0a8a58a10108f2b9bf38e7b65c237b12fd9c5f04"
-  integrity sha512-Gfj/WAastBtfxLws0RCh2sDbTK/8rJuSeZMecrSkNGYxPcv7EzblmDGfWQCFEQcSqYE2BRgQiJh8HOD07N5hIw==
+  version "1.0.30001171"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001171.tgz"
+  integrity sha512-5Alrh8TTYPG9IH4UkRqEBZoEToWRLvPbSQokvzSz0lii8/FOWKG4keO1HoYfPWs8IF/NH/dyNPg1cmJGvV3Zlg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2801,10 +2801,10 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-conflux-docusaurus-config@^0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/conflux-docusaurus-config/-/conflux-docusaurus-config-0.0.13.tgz#df00a10122ff14b6a94148f8d302579f20a83abc"
-  integrity sha512-oIH+lG8KSPr1uooEVROsEwdn+99dW634EWJttsinJZp4sBQXUN9Cvfce7t8fUmRSnJujE/iHm5A+9AntM7Cm1Q==
+conflux-docusaurus-config@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/conflux-docusaurus-config/-/conflux-docusaurus-config-0.0.15.tgz#65c846fc9079c4e373b4431602c0502fd3b73be1"
+  integrity sha512-H5h0DSVfpf2bWn1zJWLlVPvQthD525y+1LfuuvQOuKPZhfjtzmqJ8ZY2LLKCqjVCo+9ZE0vSOeAPu/AuSjPFEQ==
   dependencies:
     "@docusaurus/core" "^2.0.0-alpha.56"
     "@docusaurus/preset-classic" "^2.0.0-alpha.56"

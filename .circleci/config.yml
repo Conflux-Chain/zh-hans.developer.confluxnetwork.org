@@ -49,4 +49,4 @@ jobs:
             cp -r ../project/CNAME .
             git add -A
             git commit -m "Automated deployment: ${CIRCLE_SHA1} [ci skip]" --allow-empty 1> /dev/null
-            git push origin $TARGET_BRANCH
+            git push --force origin $TARGET_BRANCH
